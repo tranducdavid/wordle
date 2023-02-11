@@ -6,9 +6,7 @@ type LetterBoxProps = {
 }
 
 const LetterBox = ({ word, index }: LetterBoxProps) => (
-  <div className="m-1 h-16 w-16 max-w-sm rounded-lg border border-gray-200 bg-white p-4 text-center text-xl font-bold text-black shadow dark:border-gray-700 dark:bg-gray-800">
-    {getLetter(word, index)}
-  </div>
+  <div className="m-1 h-16 w-16 max-w-sm rounded-lg border border-gray-200 bg-white p-4 text-center text-xl font-bold text-black shadow">{getLetter(word, index)}</div>
 )
 
 type InProgressRowProps = {

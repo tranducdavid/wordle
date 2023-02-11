@@ -17,13 +17,7 @@ type LetterBoxProps = {
 }
 
 const LetterBox = ({ targetWord, word, index }: LetterBoxProps) => (
-  <div
-    className={`m-1 h-16 w-16 max-w-sm rounded-lg border border-gray-200 p-4 text-center text-xl font-bold text-white shadow dark:border-gray-700 dark:bg-gray-800 ${getCardStyle(
-      targetWord,
-      word,
-      index
-    )}`}
-  >
+  <div className={`m-1 h-16 w-16 max-w-sm rounded-lg border border-gray-200 p-4 text-center text-xl font-bold text-white shadow ${getCardStyle(targetWord, word, index)}`}>
     {getLetter(word, index)}
   </div>
 )
