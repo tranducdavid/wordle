@@ -5,8 +5,8 @@ import { GameState } from './GameState'
 import { GuessedRow } from './GuessedRow'
 import { InProgressRow } from './InProgressRow'
 import { getRandomWord, range } from './utils'
+import { WORD_LIST } from './WordList'
 
-const WORDS = ['HELLO', 'WORLD', 'APPLE', 'TASTY']
 const MAX_GUESS_COUNT = 6
 
 function App() {
@@ -16,13 +16,13 @@ function App() {
   const [gameState, setGameState] = useState(GameState.IN_PROGRESS)
 
   const restart = () => {
-    setTargetWord(getRandomWord(WORDS))
+    setTargetWord(getRandomWord(WORD_LIST))
     setGuessedWords([])
     setGameState(GameState.IN_PROGRESS)
   }
 
   useEffect(() => {
-    setTargetWord(getRandomWord(WORDS))
+    setTargetWord(getRandomWord(WORD_LIST))
   }, [])
 
   useEffect(() => {
@@ -75,6 +75,7 @@ function App() {
           </button>
         )}
       </div>
+      {targetWord}
     </div>
   )
 }
