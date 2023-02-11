@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import { GuessedRow } from './GuessedRow'
+import { getLetter } from './utils'
 
 const words = ['HELLO', 'WORLD', 'APPLE', 'TASTY']
 
@@ -29,7 +31,14 @@ function App() {
   return (
     <div>
       {word === targetWord && <div>You win</div>}
-      <div>{word}</div>
+      <GuessedRow targetWord={targetWord} word={word} />
+      {/* <div className="flex flex-row">
+        <div className="m-1 max-w-sm rounded-lg border border-gray-200 bg-white p-6 shadow dark:border-gray-700 dark:bg-gray-800">{getLetter(word, 0)}</div>
+        <div className="m-1 max-w-sm rounded-lg border border-gray-200 bg-white p-6 shadow dark:border-gray-700 dark:bg-gray-800">{getLetter(word, 1)}</div>
+        <div className="m-1 max-w-sm rounded-lg border border-gray-200 bg-white p-6 shadow dark:border-gray-700 dark:bg-gray-800">{getLetter(word, 2)}</div>
+        <div className="m-1 max-w-sm rounded-lg border border-gray-200 bg-white p-6 shadow dark:border-gray-700 dark:bg-gray-800">{getLetter(word, 3)}</div>
+        <div className="m-1 max-w-sm rounded-lg border border-gray-200 bg-white p-6 shadow dark:border-gray-700 dark:bg-gray-800">{getLetter(word, 4)}</div>
+      </div> */}
       <div>targetWord: {targetWord}</div>
     </div>
   )
