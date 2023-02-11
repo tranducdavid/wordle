@@ -63,7 +63,7 @@ function App() {
       ))}
       <div className="mt-4 h-24">
         {gameState === GameState.WIN && <div className="mb-2 text-lg font-bold">Victory!</div>}
-        {gameState === GameState.LOSE && <div className="mb-2 text-lg font-bold">Defeat!</div>}
+        {gameState === GameState.LOSE && <div className="mb-2 text-lg font-bold">{`Defeat! The word is ${targetWord}`}</div>}
         {gameState !== GameState.IN_PROGRESS && (
           <button
             onClick={restart}
