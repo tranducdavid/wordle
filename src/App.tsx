@@ -58,8 +58,7 @@ function App() {
         <GuessedRow key={i} word={guessedWord} targetWord={targetWord} />
       ))}
       {gameState === GameState.IN_PROGRESS && <InProgressRow word={inProgressWord} />}
-      {gameState === GameState.WIN && <EmptyRow />}
-      {range(MAX_GUESS_COUNT - guessedWords.length - 1).map((i) => (
+      {range(MAX_GUESS_COUNT - guessedWords.length - (gameState === GameState.IN_PROGRESS ? 1 : 0)).map((i) => (
         <EmptyRow key={i} />
       ))}
       <div className="mt-4 h-24">
@@ -75,7 +74,6 @@ function App() {
           </button>
         )}
       </div>
-      {targetWord}
     </div>
   )
 }
