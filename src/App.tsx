@@ -1,8 +1,15 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 
+const words = ['HELLO', 'WORLD', 'APPLE', 'TASTY']
+
 function App() {
   const [word, setWord] = useState('')
+  const [targetWord, setTargetWord] = useState('')
+
+  useEffect(() => {
+    setTargetWord(words[Math.floor(Math.random() * words.length)])
+  }, [])
 
   useEffect(() => {
     const keyListener = (event: KeyboardEvent) => {
@@ -19,7 +26,13 @@ function App() {
     return () => removeEventListener('keyup', keyListener)
   }, [word])
 
-  return <div>{word}</div>
+  return (
+    <div>
+      {word === targetWord && <div>You win</div>}
+      <div>{word}</div>
+      <div>targetWord: {targetWord}</div>
+    </div>
+  )
 }
 
 export default App
