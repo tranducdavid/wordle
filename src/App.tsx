@@ -7,7 +7,7 @@ function App() {
   useEffect(() => {
     const keyListener = (event: KeyboardEvent) => {
       if (event.keyCode >= 65 && event.keyCode <= 90 && word.length < 5) {
-        setWord((word) => word + event.key)
+        setWord((word) => word + event.key.toUpperCase())
       }
       if (event.key === 'Backspace') {
         setWord((word) => word.slice(0, -1))
