@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import { EmptyRow } from './EmptyRow'
 import { GuessedRow } from './GuessedRow'
 import { InProgressRow } from './InProgressRow'
+import { range } from './utils'
 
-const words = ['HELLO', 'WORLD', 'APPLE', 'TASTY']
+const WORDS = ['HELLO', 'WORLD', 'APPLE', 'TASTY']
+const MAX_GUESS_COUNT = 6
 
 function App() {
   const [guessedWords, setGuessedWords] = useState<Array<string>>([])
@@ -11,7 +14,7 @@ function App() {
   const [targetWord, setTargetWord] = useState('')
 
   useEffect(() => {
-    setTargetWord(words[Math.floor(Math.random() * words.length)])
+    setTargetWord(WORDS[Math.floor(Math.random() * WORDS.length)])
   }, [])
 
   useEffect(() => {
@@ -35,11 +38,14 @@ function App() {
 
   return (
     <div>
-      {inProgressWord === targetWord && <div>You win</div>}
+      {guessedWords[guessedWords.length - 1] === targetWord && <div>You win</div>}
       {guessedWords.map((guessedWord, i) => (
         <GuessedRow key={i} word={guessedWord} targetWord={targetWord} />
       ))}
       <InProgressRow word={inProgressWord} />
+      {range(MAX_GUESS_COUNT - guessedWords.length - 1).map((i) => (
+        <EmptyRow key={i} />
+      ))}
     </div>
   )
 }

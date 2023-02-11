@@ -1,4 +1,4 @@
-import { getLetter } from './utils'
+import { getLetter, range } from './utils'
 
 type LetterBoxProps = {
   word: string
@@ -17,10 +17,8 @@ type InProgressRowProps = {
 
 export const InProgressRow = ({ word }: InProgressRowProps) => (
   <div className="flex flex-row">
-    <LetterBox word={word} index={0} />
-    <LetterBox word={word} index={1} />
-    <LetterBox word={word} index={2} />
-    <LetterBox word={word} index={3} />
-    <LetterBox word={word} index={4} />
+    {range(5).map((i) => (
+      <LetterBox key={i} word={word} index={i} />
+    ))}
   </div>
 )

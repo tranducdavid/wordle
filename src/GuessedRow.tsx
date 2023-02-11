@@ -1,4 +1,4 @@
-import { getLetter, isLetterAtPosition, isLetterInWord } from './utils'
+import { getLetter, isLetterAtPosition, isLetterInWord, range } from './utils'
 
 const getCardStyle = (targetWord: string, word: string, index: number) => {
   if (isLetterAtPosition(targetWord, word[index], index)) {
@@ -35,10 +35,8 @@ type GuessedRowProps = {
 
 export const GuessedRow = ({ targetWord, word }: GuessedRowProps) => (
   <div className="flex flex-row">
-    <LetterBox targetWord={targetWord} word={word} index={0} />
-    <LetterBox targetWord={targetWord} word={word} index={1} />
-    <LetterBox targetWord={targetWord} word={word} index={2} />
-    <LetterBox targetWord={targetWord} word={word} index={3} />
-    <LetterBox targetWord={targetWord} word={word} index={4} />
+    {range(5).map((i) => (
+      <LetterBox key={i} targetWord={targetWord} word={word} index={i} />
+    ))}
   </div>
 )
